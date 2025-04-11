@@ -1,16 +1,18 @@
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
+import dotenv from "dotenv";
 import {
     getAllGame,
     findGame,
     sortGame,
 } from "./Controllers/gameController.js";
 
+dotenv.config();
+
 const app = express();
 const port = 5000;
-const MONGO_URI =
-    "mongodb+srv://akuy66:anhkhoa1234@cluster0.twrwx9u.mongodb.net/Game?retryWrites=true&w=majority&tls=true&appName=Cluster0";
+const MONGO_URI = process.env.MONGO_URI;
 
 app.use(cors());
 app.use(express.json());
