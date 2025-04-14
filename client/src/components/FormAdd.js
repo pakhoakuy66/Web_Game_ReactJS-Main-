@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 
-export function FormAdd({ setGames, games }) {
+export function FormAdd({ setGames }) {
     const [name, setName] = useState("");
     const [date, setDate] = useState("");
     const [description, setDescription] = useState("");

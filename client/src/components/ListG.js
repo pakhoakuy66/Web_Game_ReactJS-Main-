@@ -99,18 +99,22 @@ export function Listgames({
                             setSearch(e.target.value);
                         }
                     }}
-                    className="pl-2 w-[230px] h-[30px] ml-[170px] duration-300 hover:bg-red-100  hover:drop-shadow-[0_0_5px_white]"
+                    className="pl-2 w-[230px] h-[30px] ml-[170px] bg-[#0a0e1a] duration-300 hover:bg-[#12182d]  hover:drop-shadow-[0_0_5px_white]"
                 />
                 <select
-                    className="h-[30px] rounded-sm w-[230px] ml-[170px] duration-300 hover:bg-red-100  hover:drop-shadow-[0_0_5px_white]"
+                    className="h-[30px] rounded-sm w-[230px] ml-[170px] bg-[#0a0e1a] duration-300 hover:bg-[#12182d]  hover:drop-shadow-[0_0_5px_white]"
                     value={sortOrder}
                     onChange={(e) => setsortOrder(e.target.value)}
                 >
-                    <option value="" selected>
+                    <option value="" selected className="text-[#fff]">
                         Chọn một tùy chọn
                     </option>
-                    <option value="asc">A → Z</option>
-                    <option value="desc">Z → A</option>
+                    <option value="asc" className="text-[#fff]">
+                        A → Z
+                    </option>
+                    <option value="desc" className="text-[#fff]">
+                        Z → A
+                    </option>
                 </select>
                 <Link to="/games/create">
                     <button
