@@ -8,6 +8,6 @@ const gameSchema = new mongoose.Schema({
     description: { type: String, require: true, trim: true },
 });
 
-const Game = mongoose.model("Game", gameSchema);
+const Game = mongoose.model("Game", gameSchema, "games");
 
 export default Game;

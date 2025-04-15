@@ -8,7 +8,7 @@ export function Register() {
                 <h1 className="text-[#C7D5E0] text-[30px] text-center font-bold block drop-shadow-[0_0_1px_white] duration-300 hover:drop-shadow-[0_0_10px_white]">
                     Akuy
                 </h1>
-                <div className="flex h-[350px] w-[100%] p-3">
+                <div className="flex w-[100%] p-3">
                     <div className="flex justify-center items-center w-[100%] border-r-[1px]">
                         <h1 className="text-[90px] drop-shadow-[0_0_2px_white] duration-300 hover:drop-shadow-[0_0_20px_white]">
                             🎮
@@ -19,6 +19,11 @@ export function Register() {
                             Register
                         </h1>
                         <div className="grid justify-center mt-3 px-3 text-[#C7D5E0]">
+                            <input
+                                type="text"
+                                className="w-[320px] h-[35px] my-3 p-1 rounded-sm bg-[#0a0e1a] duration-300 hover:bg-[#12182d]  hover:drop-shadow-[0_0_5px_white]"
+                                placeholder="Username"
+                            />
                             <input
                                 type="text"
                                 className="w-[320px] h-[35px] my-3 p-1 rounded-sm bg-[#0a0e1a] duration-300 hover:bg-[#12182d]  hover:drop-shadow-[0_0_5px_white]"
