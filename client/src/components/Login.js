@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router";
 
 export function Login({ setIsLogin }) {
     const [email, setEmail] = useState("");
@@ -7,7 +8,7 @@ export function Login({ setIsLogin }) {
     return (
         <div className="h-screen grid justify-center items-center">
             <form className="bg-[#1B2838] p-3 shadow-xl w-[900px] h-auto rounded-sm drop-shadow-[0_0_1px_white] duration-300 hover:drop-shadow-[0_0_3px_white]">
-                <h1 className="text-[#C7D5E0]  text-[30px] text-center font-bold block drop-shadow-[0_0_1px_white] duration-300 hover:drop-shadow-[0_0_10px_white]">
+                <h1 className="text-[#C7D5E0] text-[30px] text-center font-bold block drop-shadow-[0_0_1px_white] duration-300 hover:drop-shadow-[0_0_10px_white]">
                     Akuy
                 </h1>
                 <div className="flex h-[350px] w-[100%] p-3">
@@ -17,15 +18,38 @@ export function Login({ setIsLogin }) {
                         </h1>
                     </div>
                     <div className="w-[100%]">
-                        <h1 className="text-[#C7D5E0] text-[20px] text-center font-bold block drop-shadow-[0_0_1px_white] duration-300 hover:drop-shadow-[0_0_10px_white]">
+                        <h1 className="text-[#C7D5E0] mt-4 text-[30px] text-center font-bold block drop-shadow-[0_0_1px_white] duration-300 hover:drop-shadow-[0_0_10px_white]">
                             Login
                         </h1>
-                        <div className="grid">
-                            <input type="text" />
-                            <input type="text" />
+                        <div className="grid justify-center mt-5 px-3 text-[#C7D5E0]">
+                            <input
+                                type="text"
+                                className="w-[320px] h-[35px] my-3 p-1 rounded-sm bg-[#0a0e1a] duration-300 hover:bg-[#12182d]  hover:drop-shadow-[0_0_5px_white]"
+                                placeholder="Email"
+                            />
+                            <input
+                                type="text"
+                                className="w-[320px] h-[35px] my-3 p-1 rounded-sm bg-[#0a0e1a] duration-300 hover:bg-[#12182d]  hover:drop-shadow-[0_0_5px_white]"
+                                placeholder="Password"
+                            />
+                        </div>
+                        <div className="grid justify-center mt-3">
+                            <button className="w-[90px] h-[30px] bg-[#151d2a] text-white rounded-sm drop-shadow-[0_0_1px_white] duration-300 hover:drop-shadow-[0_0_3px_white] active:scale-95 active:drop-shadow-[0_0_5px_white]">
+                                Login
+                            </button>
                         </div>
                     </div>
                 </div>
+                <p className="text-[#C7D5E0] text-center">
+                    Bạn đã có tài khoản?
+                    <Link
+                        to="/register"
+                        className="underline drop-shadow-[0_0_1px_white] duration-300 hover:drop-shadow-[0_0_10px_white]"
+                    >
+                        {" "}
+                        Đăng ký
+                    </Link>
+                </p>
             </form>
         </div>
     );

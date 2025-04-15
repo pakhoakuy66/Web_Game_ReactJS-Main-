@@ -24,7 +24,7 @@ function App() {
     return (
         <BrowserRouter>
             <div className="min-h-[567px] w-screen bg-slate-900">
-                {isLogin ? (
+                {!isLogin ? (
                     <Routes>
                         <Route
                             path="*"
