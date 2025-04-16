@@ -21,7 +21,7 @@ export const registerUser = async (req, res) => {
 
         await newUser.save();
 
-        res.status(201).json({ massage: "Đăng ký thành công" });
+        res.status(201).json({ message: "Đăng ký thành công" });
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: "Lỗi hệ thống" });

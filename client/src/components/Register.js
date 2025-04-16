@@ -2,9 +2,65 @@ import { useState } from "react";
 import { Link } from "react-router";
 
 export function Register() {
+    const [register, setRegister] = useState({
+        username: "",
+        email: "",
+        password: "",
+        confirmPass: "",
+    });
+
+    const handleChange = (e) => {
+        setRegister({
+            ...register,
+            [e.target.name]: e.target.value,
+        });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        if (register.password !== register.confirmPass) {
+            alert("Mật khẩu không khớp");
+            return;
+        }
+
+        try {
+            const res = await fetch("http://localhost:5000/register/create", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    username: register.username,
+                    email: register.email,
+                    password: register.password,
+                }),
+            });
+
+            const data = await res.json();
+
+            if (!res.ok) {
+                throw new Error(data.message || "Đăng ký thất bại");
+            }
+
+            alert(data.message || "Đăng ký thành công");
+
+            setRegister({
+                username: "",
+                email: "",
+                password: "",
+                confirmPass: "",
+            });
+        } catch (error) {
+            alert(error.message);
+        }
+    };
+
     return (
         <div className="h-screen grid justify-center items-center">
-            <form className="bg-[#1B2838] p-3 shadow-xl w-[900px] h-auto rounded-sm drop-shadow-[0_0_1px_white] duration-300 hover:drop-shadow-[0_0_3px_white]">
+            <form
+                onSubmit={handleSubmit}
+                className="bg-[#1B2838] p-3 shadow-xl w-[900px] h-auto rounded-sm drop-shadow-[0_0_1px_white] duration-300 hover:drop-shadow-[0_0_3px_white]"
+            >
                 <h1 className="text-[#C7D5E0] text-[30px] text-center font-bold block drop-shadow-[0_0_1px_white] duration-300 hover:drop-shadow-[0_0_10px_white]">
                     Akuy
                 </h1>
@@ -21,27 +77,43 @@ export function Register() {
                         <div className="grid justify-center mt-3 px-3 text-[#C7D5E0]">
                             <input
                                 type="text"
+                                name="username"
+                                value={register.username}
+                                onChange={handleChange}
                                 className="w-[320px] h-[35px] my-3 p-1 rounded-sm bg-[#0a0e1a] duration-300 hover:bg-[#12182d]  hover:drop-shadow-[0_0_5px_white]"
                                 placeholder="Username"
                             />
                             <input
                                 type="text"
+                                name="email"
+                                value={register.email}
+                                onChange={handleChange}
                                 className="w-[320px] h-[35px] my-3 p-1 rounded-sm bg-[#0a0e1a] duration-300 hover:bg-[#12182d]  hover:drop-shadow-[0_0_5px_white]"
                                 placeholder="Email"
                             />
                             <input
-                                type="text"
+                                type="password"
+                                name="password"
+                                value={register.password}
+                                onChange={handleChange}
                                 className="w-[320px] h-[35px] my-3 p-1 rounded-sm bg-[#0a0e1a] duration-300 hover:bg-[#12182d]  hover:drop-shadow-[0_0_5px_white]"
                                 placeholder="Password"
                             />
+
                             <input
-                                type="text"
+                                type="password"
+                                name="confirmPass"
+                                value={register.confirmPass}
+                                onChange={handleChange}
                                 className="w-[320px] h-[35px] my-3 p-1 rounded-sm bg-[#0a0e1a] duration-300 hover:bg-[#12182d]  hover:drop-shadow-[0_0_5px_white]"
                                 placeholder="xác nhận Password"
                             />
                         </div>
                         <div className="grid justify-center mt-2.5">
-                            <button className="w-[90px] h-[30px] bg-[#151d2a] text-white rounded-sm drop-shadow-[0_0_1px_white] duration-300 hover:drop-shadow-[0_0_3px_white] active:scale-95 active:drop-shadow-[0_0_5px_white]">
+                            <button
+                                type="submit"
+                                className="w-[90px] h-[30px] bg-[#151d2a] text-white rounded-sm drop-shadow-[0_0_1px_white] duration-300 hover:drop-shadow-[0_0_3px_white] active:scale-95 active:drop-shadow-[0_0_5px_white]"
+                            >
                                 Register
                             </button>
                         </div>
