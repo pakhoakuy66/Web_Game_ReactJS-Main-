@@ -7,7 +7,7 @@ import {
     findGame,
     sortGame,
 } from "./Controllers/gameController.js";
-import { registerUser } from "./Controllers/userController.js";
+import { registerUser, loginUser } from "./Controllers/userController.js";
 
 dotenv.config();
 
@@ -38,6 +38,7 @@ app.get("/games/search_Game", findGame);
 app.get("/games/sort_Game", sortGame);
 
 app.post("/register/create", registerUser);
+app.post("/login", loginUser);
 
 // app.post("/games/create", (req, res) => {
 //     const { name, releaseDate, description, img } = req.body;
