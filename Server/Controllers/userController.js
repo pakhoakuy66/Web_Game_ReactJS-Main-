@@ -1,6 +1,11 @@
 import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 import express from "express";
+import dotenv from "dotenv";
 import User from "../Model/userModel.js";
+
+dotenv.config();
+const JWT_SECRET = process.env.JWT_SECRET;
 
 export const registerUser = async (req, res) => {
     try {
@@ -46,8 +51,13 @@ export const loginUser = async (req, res) => {
                 .json({ message: "Mật khẩu bạn nhập không đúng" });
         }
 
+        const token = jwt.sign({ id: user._id }, JWT_SECRET, {
+            expiresIn: "1d",
+        });
+
         res.status(200).json({
             message: "Đăng nhập thành công",
+            token,
             user: {
                 id: user._id,
                 username: user.username,

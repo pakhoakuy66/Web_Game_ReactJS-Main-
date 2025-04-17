@@ -25,6 +25,8 @@ export function Login({ setIsLogin }) {
                 throw new Error(data.message || "Đăng nhập thất bại");
             }
 
+            sessionStorage.setItem("token", data.token);
+
             navigate("/games");
             alert(data.message || "Đăng nhập thành công");
 
