@@ -50,3 +50,43 @@ export const sortGame = async (req, res) => {
         });
     }
 };
+
+export const createGame = async (req, res) => {
+    try {
+        const { name, releaseDate, description, img, category } = req.body;
+
+        if (!category) {
+            return res.status(400).json({ message: "Chưa chọn thể loại game" });
+        }
+
+        const regex = new RegExp(`^GAME${category}`);
+        const games = await Game.find({ id: regex }).sort({ id: -1 });
+
+        let newId;
+
+        if (games.length === 0) {
+            newId = `GAME${category}0001`;
+        } else {
+            const lastGame = games[0];
+            const lastNumber = parseInt(lastGame.id.slice(7));
+            const nextNumber = (lastNumber + 1).toString().padStart(4, "0");
+            newId = `GAME${category}${nextNumber}`;
+        }
+
+        const newGame = new Game({
+            id: newId,
+            name,
+            releaseDate,
+            description,
+            img,
+            category,
+        });
+
+        await newGame.save();
+
+        res.status(201).json({ message: "Game được tạo", game: newGame });
+    } catch (error) {
+        console.error("Lỗi khi tạo game", error);
+        res.status(500).json({ message: "Lỗi hệ thống" });
+    }
+};
