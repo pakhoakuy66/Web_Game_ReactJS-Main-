@@ -99,26 +99,36 @@ export function Listgames({
                             setSearch(e.target.value);
                         }
                     }}
-                    className="pl-2 w-[230px] h-[30px] ml-[170px] bg-[#0a0e1a] duration-300 hover:bg-[#12182d]  hover:drop-shadow-[0_0_5px_white]"
+                    className="text-[#C7D5E0] pl-2 w-[230px] h-[30px] ml-[120px] bg-[#0a0e1a] duration-300 hover:bg-[#12182d]  hover:drop-shadow-[0_0_5px_white]"
                 />
                 <select
-                    className="h-[30px] rounded-sm w-[230px] ml-[170px] bg-[#0a0e1a] duration-300 hover:bg-[#12182d]  hover:drop-shadow-[0_0_5px_white]"
+                    className="h-[30px] text-[#fff] rounded-sm w-[230px] ml-[170px] bg-[#0a0e1a] duration-300 hover:bg-[#12182d]  hover:drop-shadow-[0_0_5px_white]"
                     value={sortOrder}
                     onChange={(e) => setsortOrder(e.target.value)}
                 >
-                    <option value="" selected className="text-[#fff]">
-                        Chọn một tùy chọn
+                    <option value="" selected>
+                        Sắp xếp theo chữ cái
                     </option>
-                    <option value="asc" className="text-[#fff]">
-                        A → Z
-                    </option>
-                    <option value="desc" className="text-[#fff]">
-                        Z → A
-                    </option>
+                    <option value="asc">A → Z</option>
+                    <option value="desc">Z → A</option>
                 </select>
-                <Link to="/games/create">
+                <select className="rounded-sm h-[30px] w-[90px] ml-[30px] bg-[#0a0e1a] text-white hover:bg-[#12182d] hover:drop-shadow-[0_0_5px_white]">
+                    <option value="">Lọc game</option>
+                    <option value="HR">Horror(HR)</option>
+                    <option value="AA">Action-Adventure(AA)</option>
+                    <option value="RP">Role-Playing Game(RP)</option>
+                    <option value="AT">Action(AT)</option>
+                    <option value="OW">Open World(OW)</option>
+                    <option value="ME">Metroidvania(ME)</option>
+                    <option value="FT">Fighting(FT)</option>
+                    <option value="ST">Shooter(ST)</option>
+                    <option value="SB">Sandbox(SB)</option>
+                    <option value="RC">Racing(RC)</option>
+                    <option value="PZ">Puzzle(PZ)</option>
+                </select>
+                <Link to="/games/create" className="ml-[70px]">
                     <button
-                        className="ml-[70px] w-[30px] h-[30px] bg-[#151d2a] text-white rounded-sm 
+                        className="w-[30px] h-[30px] bg-[#151d2a] text-white rounded-sm 
                     drop-shadow-[0_0_1px_white] duration-300 hover:drop-shadow-[0_0_3px_white] 
                     active:scale-95 active:drop-shadow-[0_0_5px_white]"
                     >

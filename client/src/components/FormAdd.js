@@ -26,19 +26,6 @@ export function FormAdd({ setGames }) {
         }
     };
 
-    // const generateGameId = () => {
-    //     if (!games || games.length === 0) {
-    //         return "GAME001";
-    //     }
-
-    //     // Lấy ID cuối cùng và trích xuất số
-    //     const lastGame = games[games.length - 1];
-    //     const lastId = lastGame.id.replace("GAME", ""); // Lấy phần số
-    //     const newId = String(parseInt(lastId) + 1).padStart(3, "0"); // Tăng số và giữ 3 chữ số
-
-    //     return `GAME${newId}`; // Sửa lỗi template string
-    // };
-
     const handleCreate = async (e) => {
         e.preventDefault();
 
@@ -80,10 +67,23 @@ export function FormAdd({ setGames }) {
     return (
         <div className="grid py-5 place-items-center">
             <form className="bg-[#1B2838] max-h-[570px] overflow-auto p-3 shadow-xl w-[500px] h-auto rounded-sm drop-shadow-[0_0_1px_white] duration-300 hover:drop-shadow-[0_0_3px_white]">
-                <h1 className="text-[#C7D5E0] text-[20px] font-bold text-center drop-shadow-[0_0_1px_white] duration-300 hover:drop-shadow-[0_0_10px_white]">
+                <h1 className="text-[#C7D5E0] text-[30px] font-bold text-center drop-shadow-[0_0_1px_white] duration-300 hover:drop-shadow-[0_0_10px_white]">
                     Akuy
                 </h1>
-                <div>
+                <div className="text-[#C7D5E0]">
+                    <nav className="my-1">
+                        <label className="text-[#C7D5E0] block drop-shadow-[0_0_1px_white] duration-300 hover:drop-shadow-[0_0_10px_white]">
+                            Id:
+                        </label>
+                        <input
+                            type="text"
+                            value={id}
+                            onChange={(e) => {
+                                setName(e.target.value);
+                            }}
+                            className="w-[100%] h-[35px] my-3 p-1 rounded-sm bg-[#0a0e1a] duration-300 hover:bg-[#12182d]  hover:drop-shadow-[0_0_5px_white]"
+                        />
+                    </nav>
                     <nav className="my-1">
                         <label className="text-[#C7D5E0] block drop-shadow-[0_0_1px_white] duration-300 hover:drop-shadow-[0_0_10px_white]">
                             Name:
@@ -94,8 +94,27 @@ export function FormAdd({ setGames }) {
                             onChange={(e) => {
                                 setName(e.target.value);
                             }}
-                            className="my-3 w-[100%] pl-2 h-[30px] duration-300 hover:bg-red-100  hover:drop-shadow-[0_0_2px_white]"
+                            className="w-[100%] h-[35px] my-3 p-1 rounded-sm bg-[#0a0e1a] duration-300 hover:bg-[#12182d]  hover:drop-shadow-[0_0_5px_white]"
                         />
+                    </nav>
+                    <nav className="my-1">
+                        <label className="text-[#C7D5E0] ml-[225px] my-1 block drop-shadow-[0_0_1px_white] duration-300 hover:drop-shadow-[0_0_10px_white]">
+                            Category:
+                        </label>
+                        <select className="rounded-sm h-[30px] w-[230px] ml-[222px] bg-[#0a0e1a] text-white hover:bg-[#12182d] hover:drop-shadow-[0_0_5px_white]">
+                            <option value="">Chọn một tùy chọn</option>
+                            <option value="HR">Horror(HR)</option>
+                            <option value="AA">Action-Adventure(AA)</option>
+                            <option value="RP">Role-Playing Game(RP)</option>
+                            <option value="AT">Action(AT)</option>
+                            <option value="OW">Open World(OW)</option>
+                            <option value="ME">Metroidvania(ME)</option>
+                            <option value="FT">Fighting(FT)</option>
+                            <option value="ST">Shooter(ST)</option>
+                            <option value="SB">Sandbox(SB)</option>
+                            <option value="RC">Racing(RC)</option>
+                            <option value="PZ">Puzzle(PZ)</option>
+                        </select>
                     </nav>
                     <nav className="my-1">
                         <label className="text-[#C7D5E0] block drop-shadow-[0_0_1px_white] duration-300 hover:drop-shadow-[0_0_10px_white]">
@@ -107,7 +126,7 @@ export function FormAdd({ setGames }) {
                             onChange={(e) => {
                                 setDate(e.target.value);
                             }}
-                            className="my-3 w-[100%] pl-2 h-[30px] duration-300 hover:bg-red-100  hover:drop-shadow-[0_0_2px_white]"
+                            className="w-[100%] h-[35px] my-3 p-1 rounded-sm bg-[#0a0e1a] duration-300 hover:bg-[#12182d]  hover:drop-shadow-[0_0_5px_white]"
                         />
                     </nav>
                     <nav className="my-1">
@@ -120,7 +139,7 @@ export function FormAdd({ setGames }) {
                             onChange={(e) => {
                                 setDescription(e.target.value);
                             }}
-                            className="my-3 w-[100%] pl-2 h-[30px] duration-300 hover:bg-red-100  hover:drop-shadow-[0_0_2px_white]"
+                            className="w-[100%] h-[35px] my-3 p-1 rounded-sm bg-[#0a0e1a] duration-300 hover:bg-[#12182d]  hover:drop-shadow-[0_0_5px_white]"
                         />
                     </nav>
                     <nav className="my-1">

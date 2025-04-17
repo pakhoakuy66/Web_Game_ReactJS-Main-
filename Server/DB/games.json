@@ -1,282 +1,352 @@
 [
     {
-        "id": "GAME001",
+        "id": "GAMEHR0001",
         "name": "Little Nightmares",
         "img": "littleNightmare.jpg",
         "releaseDate": "28-04-2017",
         "description": "'Little Nightmares' đưa người chơi vào vai Six, một cô bé nhỏ nhắn bị mắc kẹt trong The Maw, một con tàu khổng lồ đầy rẫy những sinh vật đáng sợ. Nhiệm vụ của Six là tìm cách thoát ra bằng cách giải các câu đố, lẩn trốn kẻ thù và khám phá những bí ẩn kinh hoàng của nơi này."
     },
     {
-        "id": "GAME002",
+        "id": "GAMEHR0002",
         "name": "Detention",
         "img": "detention.jpg",
         "releaseDate": "13-01-2017",
         "description": "'Detention' kể về câu chuyện của Ray và Wei, hai học sinh bị mắc kẹt trong một ngôi trường trung học hoang vắng giữa một cơn bão lớn. Khi khám phá ngôi trường, họ phát hiện ra những hiện tượng siêu nhiên kỳ lạ và dần dần vén màn những bí ẩn đen tối về xã hội Đài Loan thời bấy giờ."
     },
     {
-        "id": "GAME003",
+        "id": "GAMEHR0003",
         "name": "Inside",
         "img": "inside.jpg",
         "releaseDate": "29-06-2016",
         "description": "'Inside' đưa người chơi vào vai một cậu bé vô danh trong một thế giới đen tối, đầy rẫy nguy hiểm và bí ẩn. Cậu phải lẩn trốn khỏi những kẻ truy đuổi, giải các câu đố môi trường và khám phá một cơ sở nghiên cứu đáng sợ."
     },
     {
-        "id": "GAME004",
+        "id": "GAMEHR0004",
         "name": "Elden Ring",
         "img": "eldenRing.jpg",
         "releaseDate": "25-02-2022",
         "description": "'Elden Ring' đưa người chơi vào The Lands Between, một thế giới rộng lớn bị chia cắt sau sự vỡ nát của Elden Ring. Người chơi vào vai Tarnished, một kẻ bị lưu đày nay trở về để tìm cách khôi phục Elden Ring và trở thành Elden Lord."
     },
     {
-        "id": "GAME005",
+        "id": "GAMEHR0005",
         "name": "Miside",
         "img": "miside.jpg",
         "releaseDate": "10-12-2024",
         "description": "'MiSide', bạn vào vai một chàng trai vô tình bị cuốn vào một trò chơi mô phỏng trên điện thoại. Tại đây, bạn gặp Mita, một nhân vật nữ dễ thương nhưng ẩn chứa nhiều bí ẩn. Ban đầu, trò chơi mang phong cách anime tươi sáng, nơi bạn hỗ trợ Mita trong các công việc hàng ngày như nấu ăn, trò chuyện và tặng quà. Tuy nhiên, càng tiến sâu, bạn càng phát hiện ra những yếu tố kinh dị tâm lý khi Mita thể hiện sự chiếm hữu và kiểm soát đáng sợ, biến ngôi nhà ngọt ngào thành nơi giam cầm bạn."
     },
     {
-        "id": "GAME006",
+        "id": "GAMEME0006",
         "name": "Hollow Knight",
         "img": "hollowKnight.jpg",
         "releaseDate": "24-02-2017",
         "description": "'Hollow Knight' là một tựa game Metroidvania đầy thử thách, nơi người chơi điều khiển một chiến binh không tên khám phá vương quốc Hallownest, chiến đấu với quái vật, khám phá bí ẩn và nâng cấp kỹ năng."
     },
     {
-        "id": "GAME007",
+        "id": "GAMEAT0007",
         "name": "Resident Evil Village",
         "img": "re8.jpg",
         "releaseDate": "07-05-2021",
         "description": "'Resident Evil Village' tiếp tục câu chuyện của Ethan Winters khi anh phải đối mặt với những nỗi kinh hoàng mới trong một ngôi làng bị nguyền rủa, chống lại những sinh vật đáng sợ và khám phá bí ẩn về Lady Dimitrescu."
     },
     {
-        "id": "GAME008",
+        "id": "GAMERP0008",
         "name": "Dark Souls III",
         "img": "DarkSouls3.jpg",
         "releaseDate": "24-03-2016",
         "description": "'Dark Souls III' là một tựa game nhập vai hành động nổi tiếng với độ khó cao, nơi người chơi khám phá vương quốc Lothric, đối mặt với những kẻ thù khổng lồ và thu thập linh hồn để mạnh mẽ hơn."
     },
     {
-        "id": "GAME009",
+        "id": "GAMEAT0009",
         "name": "Sekiro: Shadows Die Twice",
         "img": "sekiro.jpg",
         "releaseDate": "22-03-2019",
         "description": "'Sekiro: Shadows Die Twice' đặt người chơi vào vai Wolf, một shinobi trên hành trình báo thù. Trò chơi có cơ chế chiến đấu tốc độ cao, yêu cầu phản xạ nhanh và chiến thuật thông minh."
     },
     {
-        "id": "GAME010",
+        "id": "GAMEAA0010",
         "name": "The Last of Us Part II",
         "img": "TheLastofUsPart2.jpg",
         "releaseDate": "19-06-2020",
         "description": "'The Last of Us Part II' là phần tiếp theo của tựa game nổi tiếng, kể về hành trình của Ellie trong một thế giới hậu tận thế đầy rẫy hiểm nguy và những quyết định đầy cảm xúc."
     },
     {
-        "id": "GAME011",
+        "id": "GAMEAA0011",
         "name": "God of War (2018)",
         "img": "GodofWar4.jpg",
         "releaseDate": "20-04-2018",
         "description": "'God of War' đưa người chơi vào cuộc phiêu lưu của Kratos và con trai Atreus trong thế giới thần thoại Bắc Âu, chiến đấu với các vị thần và khám phá câu chuyện đầy cảm xúc về gia đình."
     },
     {
-        "id": "GAME012",
+        "id": "GAMERP0012",
         "name": "Bloodborne",
         "img": "Bloodborne.jpg",
         "releaseDate": "24-03-2015",
         "description": "'Bloodborne' là một tựa game hành động nhập vai mang phong cách gothic, nơi người chơi điều khiển một thợ săn khám phá thành phố Yharnam đầy rẫy những sinh vật kinh dị và những bí ẩn đen tối."
     },
     {
-        "id": "GAME013",
+        "id": "GAMEAA0013",
         "name": "Red Dead Redemption 2",
         "img": "RedDeadRedemption2.jpg",
         "releaseDate": "26-10-2018",
         "description": "'Red Dead Redemption 2' là một tựa game thế giới mở lấy bối cảnh miền Tây hoang dã, theo chân Arthur Morgan và băng đảng Van der Linde trên con đường sinh tồn và đối mặt với quá khứ."
     },
     {
-        "id": "GAME014",
+        "id": "GAMERP0014",
         "name": "Cyberpunk 2077",
         "img": "Cyberpunk2077.jpg",
         "releaseDate": "10-12-2020",
         "description": "'Cyberpunk 2077' là một tựa game thế giới mở với bối cảnh tương lai, nơi người chơi vào vai V - một lính đánh thuê đang tìm kiếm bí mật của sự bất tử trong thành phố Night City đầy hỗn loạn."
     },
     {
-        "id": "GAME015",
+        "id": "GAMERP0015",
         "name": "The Witcher 3: Wild Hunt",
         "img": "TheWitcher3.jpg",
         "releaseDate": "19-05-2015",
         "description": "'The Witcher 3' theo chân Geralt of Rivia trong hành trình tìm kiếm Ciri, một cô gái sở hữu sức mạnh đáng sợ, đối mặt với quái vật, chính trị và những lựa chọn ảnh hưởng đến cả thế giới."
     },
     {
-        "id": "GAME016",
+        "id": "GAMEHR0016",
         "name": "Dead Space (2023)",
         "img": "DeadSpace.jpg",
         "releaseDate": "27-01-2023",
         "description": "'Dead Space' là bản làm lại của tựa game kinh dị sinh tồn nổi tiếng, theo chân Isaac Clarke khi anh chiến đấu với lũ quái vật Necromorphs trên con tàu Ishimura bị bỏ hoang."
     },
     {
-        "id": "GAME017",
+        "id": "GAMEHR0017",
         "name": "Alan Wake 2",
         "img": "AlanWake2.jpg",
         "releaseDate": "27-10-2023",
         "description": "'Alan Wake 2' là phần tiếp theo của tựa game kinh dị tâm lý nổi tiếng, nơi nhà văn Alan Wake phải đối mặt với những cơn ác mộng siêu nhiên và tìm cách thoát khỏi thực tại méo mó."
     },
     {
-        "id": "GAME018",
+        "id": "GAMEHR0018",
         "name": "Silent Hill 2 Remake",
         "img": "SilentHill2Remake.jpg",
         "releaseDate": "Dự kiến 2024",
         "description": "'Silent Hill 2 Remake' là bản làm lại của tựa game kinh dị kinh điển, theo chân James Sunderland trong hành trình đến Silent Hill để tìm người vợ đã khuất, đối mặt với nỗi ám ảnh và sự kinh hoàng."
     },
     {
-        "id": "GAME019",
+        "id": "GAMEHR0019",
         "name": "Doki Doki Literature Club!",
         "img": "DokiDoki.jpg",
         "releaseDate": "22-09-2017",
         "description": "'Doki Doki Literature Club!' ban đầu có vẻ như một trò chơi hẹn hò nhẹ nhàng, nhưng càng chơi, người chơi sẽ phát hiện ra những yếu tố kinh dị tâm lý đầy ám ảnh và đáng sợ."
     },
     {
-        "id": "GAME020",
+        "id": "GAMEHR0020",
         "name": "Outlast",
         "img": "Outlast.jpg",
         "releaseDate": "04-09-2013",
         "description": "'Outlast' là một tựa game kinh dị sinh tồn, nơi người chơi vào vai một nhà báo điều tra khám phá một bệnh viện tâm thần bị bỏ hoang, đối mặt với những kẻ tâm thần nguy hiểm mà không có khả năng chiến đấu."
     },
     {
-        "id": "GAME021",
+        "id": "GAMESB0021",
         "name": "Minecraft",
         "img": "minecraft.png",
         "releaseDate": "17-05-2009",
         "description": "'Minecraft là một trò chơi sandbox cho phép người chơi khám phá và xây dựng trong một thế giới mở rộng lớn, với các khối lập phương đại diện cho nhiều loại vật liệu khác nhau. Người chơi có thể khai thác tài nguyên, chế tạo công cụ và xây dựng các công trình sáng tạo theo ý muốn. Trò chơi đã bán được hơn 300 triệu bản tính đến tháng 10 năm 2023, trở thành một hiện tượng toàn cầu với cộng đồng người chơi đông đảo và đa dạng."
     },
     {
-        "id": "GAME022",
+        "id": "GAMEOW0022",
         "name": "Grand Theft Auto V",
         "img": "gta_v.jpg",
         "releaseDate": "17-09-2013",
         "description": "'Grand Theft Auto V' (GTA V) là một trò chơi hành động phiêu lưu thế giới mở, nơi người chơi có thể tự do khám phá thành phố Los Santos và tham gia vào các nhiệm vụ đa dạng. Trò chơi nổi bật với cốt truyện sâu sắc, nhân vật phong phú và chế độ chơi trực tuyến hấp dẫn. Tính đến tháng 8 năm 2023, GTA V đã bán được hơn 185 triệu bản, trở thành một trong những trò chơi bán chạy nhất mọi thời đại."
     },
     {
-        "id": "GAME023",
+        "id": "GAMEOW0023",
         "name": "The Elder Scrolls V: Skyrim",
         "img": "skyrim.jpg",
         "releaseDate": "11-11-2011",
         "description": "'The Elder Scrolls V: Skyrim' là một trò chơi nhập vai thế giới mở, nơi người chơi vào vai Dovahkiin trong hành trình chống lại rồng và khám phá vùng đất Skyrim rộng lớn. Trò chơi nổi tiếng với cốt truyện phong phú, hệ thống nhiệm vụ đa dạng và khả năng tùy chỉnh nhân vật sâu sắc. Tính đến tháng 6 năm 2023, Skyrim đã bán được hơn 60 triệu bản, khẳng định vị thế của mình trong làng game."
     },
     {
-        "id": "GAME024",
+        "id": "GAMEST0024",
         "name": "Overwatch",
         "img": "overwatch.jpg",
         "releaseDate": "24-05-2016",
         "description": "'Overwatch' là một trò chơi bắn súng góc nhìn thứ nhất theo đội, nơi người chơi lựa chọn từ một dàn nhân vật phong phú với kỹ năng và vai trò riêng biệt. Trò chơi tập trung vào lối chơi đồng đội và chiến thuật, với các chế độ chơi đa dạng và cập nhật thường xuyên. Tính đến tháng 4 năm 2022, Overwatch đã bán được 50 triệu bản, trở thành một trong những tựa game bắn súng phổ biến nhất."
     },
     {
-        "id": "GAME025",
+        "id": "GAMEOW0025",
         "name": "Red Dead Redemption 2",
         "img": "rdr2.jpg",
         "releaseDate": "26-10-2018",
         "description": "'Red Dead Redemption 2' là một trò chơi hành động phiêu lưu thế giới mở, lấy bối cảnh miền Tây nước Mỹ cuối thế kỷ 19. Người chơi theo chân Arthur Morgan, một thành viên của băng đảng Van der Linde, trong hành trình sinh tồn và đối mặt với những thách thức của thời đại. Trò chơi được khen ngợi về cốt truyện sâu sắc, đồ họa chân thực và thế giới mở sống động. Tính đến tháng 8 năm 2023, Red Dead Redemption 2 đã bán được hơn 55 triệu bản."
     },
     {
-        "id": "GAME026",
+        "id": "GAMEPZ0026",
         "name": "Tetris",
         "img": "tetris.jpg",
         "releaseDate": "06-06-1984",
         "description": "'Tetris' là một trò chơi xếp hình kinh điển, nơi người chơi sắp xếp các khối hình để tạo thành hàng ngang hoàn chỉnh và ghi điểm. Với lối chơi đơn giản nhưng gây nghiện, Tetris đã xuất hiện trên hơn 50 nền tảng khác nhau và bán được hơn 520 triệu bản, trở thành một trong những trò chơi điện tử mang tính biểu tượng nhất."
     },
     {
-        "id": "GAME027",
+        "id": "GAMERC0027",
         "name": "Mario Kart 8 Deluxe",
         "img": "mario_kart_8_deluxe.jpg",
         "releaseDate": "28-04-2017",
         "description": "'Mario Kart 8 Deluxe' là phiên bản nâng cấp của trò chơi đua xe nổi tiếng Mario Kart 8, được phát hành cho Nintendo Switch. Trò chơi mang đến trải nghiệm đua xe vui nhộn với các nhân vật quen thuộc từ vũ trụ Mario, cùng nhiều đường đua đa dạng và chế độ chơi phong phú. Tính đến ngày 30 tháng 6 năm 2023, Mario Kart 8 Deluxe đã bán được hơn 55 triệu bản, trở thành trò chơi bán chạy nhất trên Nintendo Switch."
     },
     {
-        "id": "GAME028",
+        "id": "GAMEST0028",
         "name": "Call of Duty: Modern Warfare",
         "img": "cod_modern_warfare.jpg",
         "releaseDate": "25-10-2019",
         "description": "'Call of Duty: Modern Warfare' là phiên bản tái khởi động của loạt game bắn súng góc nhìn thứ nhất nổi tiếng, đưa người chơi vào các nhiệm vụ chiến đấu hiện đại với cốt truyện căng thẳng và chế độ chơi trực tuyến hấp dẫn. Trò chơi nhận được đánh giá cao về đồ họa, lối chơi và tính chân thực. Loạt game Call of Duty đã bán được khoảng 400 triệu bản tính đến nay."
     },
     {
-        "id": "GAME029",
+        "id": "GAMERP0029",
         "name": "Pokémon Sword and Shield",
         "img": "pokemon_sword_shield.jpg",
         "releaseDate": "15-11-2019",
         "description": "'Pokémon Sword and Shield' là hai phiên bản của loạt game nhập vai Pokémon, đưa người chơi vào hành trình trở thành nhà huấn luyện Pokémon xuất sắc trong vùng đất Galar. Trò chơi giới thiệu nhiều Pokémon mới, cơ chế Dynamax và các trận đấu hấp dẫn. Tính đến tháng 3 năm 2021, cả hai phiên bản đã bán được hơn 21 triệu bản, trở thành một trong những tựa game bán chạy nhất trên Nintendo Switch."
     },
     {
-        "id": "GAME030",
+        "id": "GAMEOW0030",
         "name": "The Legend of Zelda: Breath of the Wild",
         "img": "zelda_botw.jpg",
         "releaseDate": "03-03-2017",
         "description": "'The Legend of Zelda: Breath of the Wild' là một trò chơi hành động phiêu lưu thế giới mở, nơi người chơi vào vai Link trong hành trình giải cứu công chúa Zelda và vương quốc Hyrule khỏi thế lực ác quỷ. Trò chơi được khen ngợi về thiết kế thế giới mở tự do, cơ"
     },
     {
-        "id": "GAME031",
+        "id": "GAMERP0031",
         "name": "Baldur's Gate 3",
         "img": "baldurs_gate_3.jpg",
         "releaseDate": "03-08-2023",
         "description": "'Baldur's Gate 3' là một game nhập vai theo lượt dựa trên hệ thống Dungeons & Dragons, nơi người chơi khám phá thế giới Forgotten Realms, tương tác với đồng đội và đưa ra những quyết định ảnh hưởng đến cốt truyện."
     },
     {
-        "id": "GAME032",
+        "id": "GAMEOW0032",
         "name": "Horizon Forbidden West",
         "img": "horizon_forbidden_west.jpg",
         "releaseDate": "18-02-2022",
         "description": "'Horizon Forbidden West' tiếp tục hành trình của Aloy trong một thế giới hậu tận thế đầy sinh vật máy móc, nơi cô khám phá những vùng đất bí ẩn và chiến đấu chống lại kẻ thù để cứu lấy nhân loại."
     },
     {
-        "id": "GAME033",
+        "id": "GAMERP0033",
         "name": "Starfield",
         "img": "starfield.jpg",
         "releaseDate": "06-09-2023",
         "description": "'Starfield' là tựa game nhập vai không gian của Bethesda, nơi người chơi khám phá vũ trụ rộng lớn, xây dựng tàu vũ trụ, thực hiện nhiệm vụ và khám phá những bí ẩn của thiên hà."
     },
     {
-        "id": "GAME034",
+        "id": "GAMEOW0034",
         "name": "The Legend of Zelda: Tears of the Kingdom",
         "img": "zelda_totk.jpg",
         "releaseDate": "12-05-2023",
         "description": "'Tears of the Kingdom' tiếp tục câu chuyện của Link trong thế giới Hyrule rộng lớn, mang đến cơ chế sáng tạo mới và các bí ẩn trên bầu trời cùng những thử thách độc đáo."
     },
     {
-        "id": "GAME035",
+        "id": "GAMEAA0035",
         "name": "Assassin's Creed Mirage",
         "img": "ac_mirage.jpg",
         "releaseDate": "05-10-2023",
         "description": "'Assassin’s Creed Mirage' đưa người chơi đến Baghdad thế kỷ 9, vào vai Basim – một sát thủ trẻ tuổi trên hành trình khám phá quá khứ và gia nhập Hội Sát Thủ."
     },
     {
-        "id": "GAME036",
+        "id": "GAMERP0036",
         "name": "Diablo IV",
         "img": "diablo_4.jpg",
         "releaseDate": "06-06-2023",
         "description": "'Diablo IV' là phần tiếp theo của loạt game nhập vai hành động nổi tiếng, nơi người chơi khám phá thế giới Sanctuary, đối đầu với quỷ dữ và săn tìm trang bị mạnh mẽ."
     },
     {
-        "id": "GAME037",
+        "id": "GAMERP0037",
         "name": "Final Fantasy XVI",
         "img": "final_fantasy_16.jpg",
         "releaseDate": "22-06-2023",
         "description": "'Final Fantasy XVI' mang đến một thế giới giả tưởng hoành tráng, nơi Clive Rosfield phải đối đầu với số phận, chiến đấu với Eikon và khám phá những âm mưu chính trị."
     },
     {
-        "id": "GAME038",
+        "id": "GAMEFT0038",
         "name": "Street Fighter 6",
         "img": "street_fighter_6.jpg",
         "releaseDate": "02-06-2023",
         "description": "'Street Fighter 6' là phần mới nhất của loạt game đối kháng huyền thoại, mang đến hệ thống chiến đấu cải tiến, dàn nhân vật đa dạng và chế độ chơi trực tuyến hấp dẫn."
     },
     {
-        "id": "GAME039",
+        "id": "GAMERP0039",
         "name": "Lies of P",
         "img": "lies_of_p.jpg",
         "releaseDate": "19-09-2023",
         "description": "'Lies of P' là một game hành động lấy cảm hứng từ Bloodborne, dựa trên câu chuyện Pinocchio, nơi người chơi khám phá thành phố Krat đầy rẫy những cỗ máy sát nhân."
     },
     {
-        "id": "GAME040",
+        "id": "GAMEFT0040",
         "name": "Mortal Kombat 1",
         "img": "mortal_kombat_1.jpg",
         "releaseDate": "19-09-2023",
         "description": "'Mortal Kombat 1' là bản reboot của series đối kháng huyền thoại, với đồ họa đẹp mắt, cơ chế chiến đấu mới và những màn Fatality đầy ấn tượng."
+    },
+    {
+        "id": "GAMEHR0041",
+        "name": "The Cat Lady",
+        "img": "the_cat_lady.jpg",
+        "releaseDate": "01-12-2012",
+        "description": "'The Cat Lady' là một game phiêu lưu tâm lý kinh dị xoay quanh Susan Ashworth – một người phụ nữ trầm cảm gặp phải những sinh vật siêu nhiên trong hành trình tìm kiếm ý nghĩa cuộc sống."
+    },
+    {
+        "id": "GAMEAT0042",
+        "name": "Sifu",
+        "img": "sifu.jpg",
+        "releaseDate": "08-02-2022",
+        "description": "'Sifu' là một game hành động võ thuật góc nhìn thứ ba, theo chân một võ sư trẻ trên hành trình trả thù những kẻ đã sát hại gia đình mình. Mỗi lần thất bại, nhân vật sẽ già đi, làm tăng kỹ năng chiến đấu nhưng giảm sức bền."
+    },
+    {
+        "id": "GAMEAA0043",
+        "name": "Death Stranding",
+        "img": "death_stranding.jpg",
+        "releaseDate": "08-11-2019",
+        "description": "'Death Stranding' là một game phiêu lưu hành động độc đáo của Hideo Kojima, đưa người chơi vào vai Sam Bridges – người vận chuyển hàng hóa qua một nước Mỹ hậu tận thế, kết nối những cộng đồng bị chia cắt với nhau."
+    },
+    {
+        "id": "GAMEHR0044",
+        "name": "Amnesia: The Bunker",
+        "img": "amnesia_bunker.jpg",
+        "releaseDate": "06-06-2023",
+        "description": "'Amnesia: The Bunker' là phần mới trong loạt game kinh dị sinh tồn, lấy bối cảnh Thế chiến I. Người chơi phải khám phá một hầm ngầm u ám, đối mặt với một sinh vật săn mồi nguy hiểm và tận dụng môi trường để sống sót."
+    },
+    {
+        "id": "GAMEST0045",
+        "name": "Returnal",
+        "img": "returnal.jpg",
+        "releaseDate": "30-04-2021",
+        "description": "'Returnal' là một game bắn súng roguelike khoa học viễn tưởng, nơi người chơi điều khiển Selene – một phi hành gia mắc kẹt trong vòng lặp thời gian trên hành tinh Atropos. Cô phải chiến đấu với sinh vật ngoài hành tinh và khám phá những ký ức bị lãng quên."
+    },
+    {
+        "id": "GAMEAA0046",
+        "name": "It Takes Two",
+        "img": "it_takes_two.jpg",
+        "releaseDate": "26-03-2021",
+        "description": "'It Takes Two' là một game phiêu lưu hành động co-op sáng tạo, kể về hai vợ chồng bị biến thành búp bê nhỏ và phải hợp tác vượt qua hàng loạt thử thách kỳ quặc để hàn gắn mối quan hệ đang rạn nứt của mình."
+    },
+    {
+        "id": "GAMEAA0047",
+        "name": "A Plague Tale: Requiem",
+        "img": "plague_tale_requiem.jpg",
+        "releaseDate": "18-10-2022",
+        "description": "'A Plague Tale: Requiem' tiếp tục câu chuyện của Amicia và Hugo khi họ chạy trốn khỏi sự truy đuổi và bệnh dịch hạch trong một thế giới Trung Cổ đầy nguy hiểm, với lối chơi lén lút và cốt truyện đầy cảm xúc."
+    },
+    {
+        "id": "GAMEHR0048",
+        "name": "Scorn",
+        "img": "scorn.jpg",
+        "releaseDate": "14-10-2022",
+        "description": "'Scorn' là một tựa game kinh dị sinh tồn góc nhìn thứ nhất mang phong cách H.R. Giger, nơi người chơi khám phá một thế giới ngoài hành tinh ghê rợn, giải các câu đố sinh học kỳ quái và đối mặt với nỗi sợ bản thể."
+    },
+    {
+        "id": "GAMEHR0049",
+        "name": "Little Misfortune",
+        "img": "little_misfortune.jpg",
+        "releaseDate": "18-09-2019",
+        "description": "'Little Misfortune' là một game phiêu lưu tương tác kể về cô bé Misfortune – người được một giọng nói bí ẩn hướng dẫn trên hành trình tìm kiếm hạnh phúc vĩnh cửu. Trò chơi kết hợp phong cách đáng yêu với yếu tố đen tối, gây ám ảnh."
+    },
+    {
+        "id": "GAMEHR0050",
+        "name": "The Quarry",
+        "img": "the_quarry.jpg",
+        "releaseDate": "10-06-2022",
+        "description": "'The Quarry' là một game kinh dị tương tác, nơi người chơi điều khiển nhóm thanh thiếu niên cố gắng sống sót qua một đêm đầy sinh vật bí ẩn tại trại hè Hackett's Quarry. Mỗi lựa chọn có thể dẫn đến cái chết hoặc sống sót của nhân vật."
     }
 ]
