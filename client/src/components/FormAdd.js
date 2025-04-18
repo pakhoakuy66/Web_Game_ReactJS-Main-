@@ -65,6 +65,7 @@ export function FormAdd({ setGames }) {
         }
 
         const newGame = {
+            id,
             name,
             releaseDate: formattedDate,
             description,

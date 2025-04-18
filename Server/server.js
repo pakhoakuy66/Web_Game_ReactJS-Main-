@@ -8,6 +8,7 @@ import {
     sortGame,
     createGame,
     generateGameId,
+    findCategory,
 } from "./Controllers/gameController.js";
 import { registerUser, loginUser } from "./Controllers/userController.js";
 
@@ -39,6 +40,7 @@ app.get("/games", getAllGame);
 app.get("/games/search_Game", findGame);
 app.get("/games/sort_Game", sortGame);
 app.get("/games/generate-id", generateGameId);
+app.get("/games/filterCategory", findCategory);
 
 app.post("/register/create", registerUser);
 app.post("/login", loginUser);

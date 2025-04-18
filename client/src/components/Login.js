@@ -62,7 +62,7 @@ export function Login({ setIsLogin }) {
                         </h1>
                         <div className="grid justify-center mt-5 px-3 text-[#C7D5E0]">
                             <input
-                                type="text"
+                                type="email"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 className="w-[320px] h-[35px] my-3 p-1 rounded-sm bg-[#0a0e1a] duration-300 hover:bg-[#12182d]  hover:drop-shadow-[0_0_5px_white]"

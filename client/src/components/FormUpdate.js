@@ -95,25 +95,6 @@ export function FormUpdate({ setGames, games }) {
                         />
                     </nav>
                     <nav className="my-1">
-                        <label className="text-[#C7D5E0] ml-[225px] my-1 block drop-shadow-[0_0_1px_white] duration-300 hover:drop-shadow-[0_0_10px_white]">
-                            Category:
-                        </label>
-                        <select className="rounded-sm h-[30px] w-[230px] ml-[222px] bg-[#0a0e1a] text-white hover:bg-[#12182d] hover:drop-shadow-[0_0_5px_white]">
-                            <option value="">Chọn một tùy chọn</option>
-                            <option value="HR">Horror(HR)</option>
-                            <option value="AA">Action-Adventure(AA)</option>
-                            <option value="RP">Role-Playing Game(RP)</option>
-                            <option value="AT">Action(AT)</option>
-                            <option value="OW">Open World(OW)</option>
-                            <option value="ME">Metroidvania(ME)</option>
-                            <option value="FT">Fighting(FT)</option>
-                            <option value="ST">Shooter(ST)</option>
-                            <option value="SB">Sandbox(SB)</option>
-                            <option value="RC">Racing(RC)</option>
-                            <option value="PZ">Puzzle(PZ)</option>
-                        </select>
-                    </nav>
-                    <nav className="my-1">
                         <label className="text-[#C7D5E0] block drop-shadow-[0_0_1px_white] duration-300 hover:drop-shadow-[0_0_10px_white]">
                             Release Date:
                         </label>

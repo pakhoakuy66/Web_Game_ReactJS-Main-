@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { data, Link } from "react-router";
+import { Link } from "react-router";
 import { Button } from "react-bootstrap";
 
 export function Listgames({
@@ -7,29 +7,55 @@ export function Listgames({
     setsortOrder,
     search,
     setSearch,
-    games,
+    games = [],
     setGames,
 }) {
+    const [page, setPage] = useState(1);
+    const [filterCategory, setFilterCategory] = useState("");
+
     useEffect(() => {
         fetch("http://localhost:5000/games")
             .then((res) => res.json())
             .then((data) => setGames(data))
-            .catch((error) => console.error("Error fetch data", error));
+            .catch((error) => {
+                console.error("Lỗi", error);
+                setGames([]); // Set to empty array on error
+            });
     }, []);
 
     useEffect(() => {
         fetch(`http://localhost:5000/games/search_Game?search=${search}`)
             .then((res) => res.json())
             .then((data) => setGames(data))
-            .catch((error) => console.error("Lỗi", error));
+            .catch((error) => {
+                console.error("Lỗi", error);
+                setGames([]); // Set to empty array on error
+            });
     }, [search]);
 
     useEffect(() => {
         fetch(`http://localhost:5000/games/sort_Game?sortOrder=${sortOrder}`)
             .then((res) => res.json())
             .then((data) => setGames(data))
-            .catch((error) => console.error("Lỗi", error));
+            .catch((error) => {
+                console.error("Lỗi", error);
+                setGames([]); // Set to empty array on error
+            });
     }, [sortOrder]);
+
+    useEffect(() => {
+        if (!filterCategory) return;
+
+        fetch(
+            `http://localhost:5000/games/filterCategory?category=${filterCategory}`
+        )
+            .then((res) => res.json())
+            .then((data) => setGames(data))
+            .catch((error) => {
+                console.error("Lỗi", error);
+                setGames([]); // Set to empty array on error
+            });
+    }, [filterCategory]);
 
     const handleDeleteGame = async (id, name) => {
         if (!window.confirm(`Bạn có muốn xóa game ${name}`)) return;
@@ -112,7 +138,11 @@ export function Listgames({
                     <option value="asc">A → Z</option>
                     <option value="desc">Z → A</option>
                 </select>
-                <select className="rounded-sm h-[30px] w-[90px] ml-[30px] bg-[#0a0e1a] text-white hover:bg-[#12182d] hover:drop-shadow-[0_0_5px_white]">
+                <select
+                    value={filterCategory}
+                    onChange={(e) => setFilterCategory(e.target.value)}
+                    className="rounded-sm h-[30px] w-[90px] ml-[30px] bg-[#0a0e1a] text-white hover:bg-[#12182d] hover:drop-shadow-[0_0_5px_white]"
+                >
                     <option value="">Lọc game</option>
                     <option value="HR">Horror(HR)</option>
                     <option value="AA">Action-Adventure(AA)</option>
@@ -139,74 +169,85 @@ export function Listgames({
             <main className="p-3">
                 <div className="p-5 mt-3">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        {games.map((game) => {
-                            let imagePath;
-                            try {
-                                imagePath = require(`../assets/images/${game.img}`);
-                            } catch (error) {
-                                console.error(
-                                    `"Không tìm thấy ảnh:", game.img`
-                                );
-                                imagePath = "";
-                            }
-                            return (
-                                <Link to={`/games/${game.id}`} key={game.id}>
-                                    <div
-                                        name="id"
-                                        className="bg-[#1e293b] max-h-[430px] min-h-[430px] p-4 rounded-lg shadow-lg hover:scale-102 transition-all duration-300 hover:drop-shadow-[0_0_2px_white]"
+                        {Array.isArray(games) && games.length > 0 ? (
+                            games.map((game) => {
+                                let imagePath;
+                                try {
+                                    imagePath = require(`../assets/images/${game.img}`);
+                                } catch (error) {
+                                    console.error(
+                                        `"Không tìm thấy ảnh:", game.img`
+                                    );
+                                    imagePath = "";
+                                }
+                                return (
+                                    <Link
+                                        to={`/games/${game.id}`}
+                                        key={game.id}
                                     >
-                                        <img
-                                            name="img"
-                                            src={imagePath}
-                                            alt=""
-                                            className="w-full h-[150px] bg-[#000] object-contain rounded-md"
-                                        />
-                                        <h2 className="text-white mt-3 text-lg font-bold duration-200 hover:drop-shadow-[0_0_10px_white]">
-                                            {game.name}
-                                        </h2>
-                                        <p className="text-gray-300 text-sm mt-1">
-                                            Release Date: {game.releaseDate}
-                                        </p>
-                                        <p className="text-gray-400 mt-2">
-                                            Description:{" "}
-                                        </p>
-                                        <p className="text-gray-400 text-sm line-clamp-3 max-h-[300px] duration-100 hover:overflow-y-auto">
-                                            {game.description}
-                                        </p>
-                                        <div className="flex justify-around mt-3">
-                                            <Link
-                                                to={`/games/update/${game.id}`}
-                                            >
-                                                <button className="w-[90px] h-[30px] bg-[#151d2a] text-white rounded-sm drop-shadow-[0_0_1px_white] duration-300 hover:drop-shadow-[0_0_3px_white] active:scale-95 active:drop-shadow-[0_0_5px_white]">
-                                                    Update
+                                        <div
+                                            name="id"
+                                            className="bg-[#1e293b] max-h-[430px] min-h-[430px] p-4 rounded-lg shadow-lg hover:scale-102 transition-all duration-300 hover:drop-shadow-[0_0_2px_white]"
+                                        >
+                                            <img
+                                                name="img"
+                                                src={imagePath}
+                                                alt=""
+                                                className="w-full h-[150px] bg-[#000] object-contain rounded-md"
+                                            />
+                                            <h2 className="text-white mt-3 text-lg font-bold duration-200 hover:drop-shadow-[0_0_10px_white]">
+                                                {game.name}
+                                            </h2>
+                                            <p className="text-gray-300 text-sm mt-1">
+                                                Release Date: {game.releaseDate}
+                                            </p>
+                                            <p className="text-gray-400 mt-2">
+                                                Description:{" "}
+                                            </p>
+                                            <p className="text-gray-400 text-sm line-clamp-3 max-h-[300px] duration-100 hover:overflow-y-auto">
+                                                {game.description}
+                                            </p>
+                                            <div className="flex justify-around mt-3">
+                                                <Link
+                                                    to={`/games/update/${game.id}`}
+                                                >
+                                                    <button className="w-[90px] h-[30px] bg-[#151d2a] text-white rounded-sm drop-shadow-[0_0_1px_white] duration-300 hover:drop-shadow-[0_0_3px_white] active:scale-95 active:drop-shadow-[0_0_5px_white]">
+                                                        Update
+                                                    </button>
+                                                </Link>
+                                                <button
+                                                    onClick={(e) => {
+                                                        e.preventDefault();
+                                                        handleDeleteGame(
+                                                            game.id,
+                                                            game.name
+                                                        );
+                                                    }}
+                                                    className="w-[90px] h-[30px] bg-[#151d2a] text-white rounded-sm drop-shadow-[0_0_1px_white] duration-300 hover:drop-shadow-[0_0_3px_white] active:scale-95 active:drop-shadow-[0_0_5px_white]"
+                                                >
+                                                    Delete
                                                 </button>
-                                            </Link>
-                                            <button
-                                                onClick={(e) => {
-                                                    e.preventDefault();
-                                                    handleDeleteGame(
-                                                        game.id,
-                                                        game.name
-                                                    );
-                                                }}
-                                                className="w-[90px] h-[30px] bg-[#151d2a] text-white rounded-sm drop-shadow-[0_0_1px_white] duration-300 hover:drop-shadow-[0_0_3px_white] active:scale-95 active:drop-shadow-[0_0_5px_white]"
-                                            >
-                                                Delete
-                                            </button>
+                                            </div>
                                         </div>
-                                    </div>
-                                </Link>
-                            );
-                        })}
+                                    </Link>
+                                );
+                            })
+                        ) : (
+                            <div className="col-span-4 text-center text-white text-lg">
+                                Không tìm thấy game nào.
+                            </div>
+                        )}
                     </div>
-                    <div className="flex justify-center mt-5">
-                        <Button
-                            onClick={() => setGames([...games, ...games])}
-                            variant="primary"
-                        >
-                            Tải thêm
-                        </Button>
-                    </div>
+                    {Array.isArray(games) && games.length > 0 && (
+                        <div className="flex justify-center mt-5">
+                            <Button
+                                onClick={() => setGames([...games, ...games])}
+                                variant="primary"
+                            >
+                                Tải thêm
+                            </Button>
+                        </div>
+                    )}
                 </div>
             </main>
         </div>

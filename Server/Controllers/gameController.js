@@ -3,7 +3,11 @@ import Game from "../Model/gameModel.js";
 
 export const getAllGame = async (req, res) => {
     try {
-        const games = await Game.find();
+        const { page = 1, limit = 8 } = req.query;
+        const games = await Game.find()
+            .skip((page - 1) * limit)
+            .limit(Number(limit));
+
         res.json(games);
     } catch (error) {
         res.status(500).json({ message: "Lỗi khi lấy dữ liệu", error });
@@ -37,7 +41,7 @@ export const sortGame = async (req, res) => {
 
         if (sortOrder === "asc") {
             sort.name = 1;
-        } else if (sort === "desc") {
+        } else if (sortOrder === "desc") {
             sort.name = -1;
         }
 
@@ -59,50 +63,39 @@ export const generateGameId = async (req, res) => {
             return res.status(400).json({ message: "Chưa chọn thể loại game" });
         }
 
-        const regex = new RegExp(`^GAME${category}`);
-        const games = await Game.find({ id: regex }).sort({ id: -1 });
+        const allGames = await Game.find();
 
-        let newId;
+        let maxNumber = 0;
+        allGames.forEach((game) => {
+            const match = game.id?.match(/GAME[A-Z]{2}(\d{4})/);
+            if (match) {
+                const number = parseInt(match[1]);
+                if (number > maxNumber) {
+                    maxNumber = number;
+                }
+            }
+        });
 
-        if (games.length === 0) {
-            newId = `GAME${category}0001`;
-        } else {
-            const lastGame = games[0];
-            const lastNumber = parseInt(lastGame.id.slice(7));
-            const nextNumber = (lastNumber + 1).toString().padStart(4, "0");
-            newId = `GAME${category}${nextNumber}`;
-        }
+        const nextNumber = (maxNumber + 1).toString().padStart(4, "0");
+        const newId = `GAME${category}${nextNumber}`;
 
         res.json({ id: newId });
     } catch (error) {
+        console.error("Lỗi khi tạo ID", error);
         res.status(500).json({ message: "Lỗi khi tạo ID", error });
     }
 };
 
 export const createGame = async (req, res) => {
     try {
-        const { name, releaseDate, description, img, category } = req.body;
+        const { id, name, releaseDate, description, img, category } = req.body;
 
-        if (!category) {
-            return res.status(400).json({ message: "Chưa chọn thể loại game" });
-        }
-
-        const regex = new RegExp(`^GAME${category}`);
-        const games = await Game.find({ id: regex }).sort({ id: -1 });
-
-        let newId;
-
-        if (games.length === 0) {
-            newId = `GAME${category}0001`;
-        } else {
-            const lastGame = games[0];
-            const lastNumber = parseInt(lastGame.id.slice(7));
-            const nextNumber = (lastNumber + 1).toString().padStart(4, "0");
-            newId = `GAME${category}${nextNumber}`;
+        if (!id || !category) {
+            return res.status(400).json({ message: "Thiếu ID hoặc category" });
         }
 
         const newGame = new Game({
-            id: newId,
+            id,
             name,
             releaseDate,
             description,
@@ -117,4 +110,32 @@ export const createGame = async (req, res) => {
         console.error("Lỗi khi tạo game", error);
         res.status(500).json({ message: "Lỗi hệ thống" });
     }
+};
+
+export const findCategory = async (req, res) => {
+    try {
+        const { category } = req.query;
+
+        if (!category) {
+            return res.status(400).json({ message: "Chưa chọn thể loại game" });
+        }
+
+        const games = await Game.find({
+            id: { $regex: `GAME${category}` },
+        });
+
+        res.json(games);
+    } catch (error) {
+        res.status(500).json({ message: "Lỗi khi lọc thể loại game", error });
+    }
+};
+
+export const updateGame = async (req, res) => {
+    try {
+        const { id, name, releaseDate, description, img, category } = req.body;
+
+        if (!id) {
+            return res.status(400).json({ message: "Game này không tồn tại" });
+        }
+    } catch (error) {}
 };
