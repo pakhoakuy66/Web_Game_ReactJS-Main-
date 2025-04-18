@@ -1,18 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
 export function FormAdd({ setGames }) {
+    const [id, setId] = useState("");
     const [name, setName] = useState("");
     const [date, setDate] = useState("");
     const [description, setDescription] = useState("");
     const [image, setImage] = useState(null);
     const [imagePreview, setImagePreview] = useState(null);
+    const [category, setCategory] = useState("");
     const navigate = useNavigate();
 
     console.log("setGames:", setGames);
 
-    const [year, month, day] = date.split("-");
-    const formattedDate = `${day}/${month}/${year}`;
+    const formattedDate = date ? date.split("-").reverse().join("/") : "";
+
+    useEffect(() => {
+        setId("GAME");
+    }, []);
 
     const handleImageAdd = (e) => {
         if (!e.target.files || e.target.files.length === 0) {
@@ -26,10 +31,35 @@ export function FormAdd({ setGames }) {
         }
     };
 
+    const handleCategory = async (value) => {
+        setCategory(value);
+
+        if (!value) {
+            setId("GAME");
+            return;
+        }
+
+        try {
+            const res = await fetch(
+                `http://localhost:5000/games/generate-id?category=${value}`
+            );
+            const data = await res.json();
+
+            if (res.ok) {
+                setId(data.id);
+            } else {
+                alert(data.message || "Lỗi tạo id");
+            }
+        } catch (error) {
+            console.error(error);
+            alert("Lỗi khi tạo id");
+        }
+    };
+
     const handleCreate = async (e) => {
         e.preventDefault();
 
-        if (!name || !date || !description || !image) {
+        if (!name || !date || !description || !image || !category) {
             alert("Vui lòng nhập hết tất cả các trường!");
             return;
         }
@@ -39,6 +69,7 @@ export function FormAdd({ setGames }) {
             releaseDate: formattedDate,
             description,
             img: image.name,
+            category, // Gửi về để server tạo id
         };
 
         try {
@@ -51,12 +82,15 @@ export function FormAdd({ setGames }) {
             });
 
             const result = await response.json();
+
             if (response.ok) {
                 setGames((prevGames) => [...prevGames, result.game]);
-                alert(`Đã thêm thành công game: "${name}"`);
+                alert(
+                    `Đã thêm thành công game: "${result.game.name}" với ID: ${result.game.id}`
+                );
                 navigate("/games");
             } else {
-                alert(result.message);
+                alert(result.message || "Có lỗi xảy ra khi thêm game.");
             }
         } catch (error) {
             console.error("Lỗi khi gửi dữ liệu:", error);
@@ -66,7 +100,10 @@ export function FormAdd({ setGames }) {
 
     return (
         <div className="grid py-5 place-items-center">
-            <form className="bg-[#1B2838] max-h-[570px] overflow-auto p-3 shadow-xl w-[500px] h-auto rounded-sm drop-shadow-[0_0_1px_white] duration-300 hover:drop-shadow-[0_0_3px_white]">
+            <form
+                onSubmit={handleCreate}
+                className="bg-[#1B2838] max-h-[570px] overflow-auto p-3 shadow-xl w-[500px] h-auto rounded-sm drop-shadow-[0_0_1px_white] duration-300 hover:drop-shadow-[0_0_3px_white]"
+            >
                 <h1 className="text-[#C7D5E0] text-[30px] font-bold text-center drop-shadow-[0_0_1px_white] duration-300 hover:drop-shadow-[0_0_10px_white]">
                     Akuy
                 </h1>
@@ -78,9 +115,7 @@ export function FormAdd({ setGames }) {
                         <input
                             type="text"
                             value={id}
-                            onChange={(e) => {
-                                setName(e.target.value);
-                            }}
+                            readOnly
                             className="w-[100%] h-[35px] my-3 p-1 rounded-sm bg-[#0a0e1a] duration-300 hover:bg-[#12182d]  hover:drop-shadow-[0_0_5px_white]"
                         />
                     </nav>
@@ -101,7 +136,11 @@ export function FormAdd({ setGames }) {
                         <label className="text-[#C7D5E0] ml-[225px] my-1 block drop-shadow-[0_0_1px_white] duration-300 hover:drop-shadow-[0_0_10px_white]">
                             Category:
                         </label>
-                        <select className="rounded-sm h-[30px] w-[230px] ml-[222px] bg-[#0a0e1a] text-white hover:bg-[#12182d] hover:drop-shadow-[0_0_5px_white]">
+                        <select
+                            value={category}
+                            onChange={(e) => handleCategory(e.target.value)}
+                            className="rounded-sm h-[30px] w-[230px] ml-[222px] bg-[#0a0e1a] text-white hover:bg-[#12182d] hover:drop-shadow-[0_0_5px_white]"
+                        >
                             <option value="">Chọn một tùy chọn</option>
                             <option value="HR">Horror(HR)</option>
                             <option value="AA">Action-Adventure(AA)</option>
@@ -170,7 +209,7 @@ export function FormAdd({ setGames }) {
                         Cancel
                     </button>
                     <button
-                        onClick={handleCreate}
+                        type="submit"
                         className="w-[90px] h-[30px] bg-[#151d2a] text-white rounded-sm drop-shadow-[0_0_1px_white] duration-300 hover:drop-shadow-[0_0_3px_white] active:scale-95 active:drop-shadow-[0_0_5px_white] hover:text-green-400"
                     >
                         Create

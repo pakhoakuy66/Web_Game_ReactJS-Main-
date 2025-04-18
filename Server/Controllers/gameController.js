@@ -51,6 +51,34 @@ export const sortGame = async (req, res) => {
     }
 };
 
+export const generateGameId = async (req, res) => {
+    try {
+        const { category } = req.query;
+
+        if (!category) {
+            return res.status(400).json({ message: "Chưa chọn thể loại game" });
+        }
+
+        const regex = new RegExp(`^GAME${category}`);
+        const games = await Game.find({ id: regex }).sort({ id: -1 });
+
+        let newId;
+
+        if (games.length === 0) {
+            newId = `GAME${category}0001`;
+        } else {
+            const lastGame = games[0];
+            const lastNumber = parseInt(lastGame.id.slice(7));
+            const nextNumber = (lastNumber + 1).toString().padStart(4, "0");
+            newId = `GAME${category}${nextNumber}`;
+        }
+
+        res.json({ id: newId });
+    } catch (error) {
+        res.status(500).json({ message: "Lỗi khi tạo ID", error });
+    }
+};
+
 export const createGame = async (req, res) => {
     try {
         const { name, releaseDate, description, img, category } = req.body;
