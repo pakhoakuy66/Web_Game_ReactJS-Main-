@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router";
+import { data, Link } from "react-router";
 import { Button } from "react-bootstrap";
 
 export function Listgames({
@@ -10,41 +10,58 @@ export function Listgames({
     games = [],
     setGames,
 }) {
-    const [page, setPage] = useState(1);
     const [filterCategory, setFilterCategory] = useState("");
+    const [page, setPage] = useState(1); // Trang hiện tại
+    const [totalGames, setTotalGames] = useState(0); // Tổng số game
+    const limit = 8; // Số game mỗi trang
 
-    useEffect(() => {
-        fetch("http://localhost:5000/games")
-            .then((res) => res.json())
-            .then((data) => setGames(data))
-            .catch((error) => {
-                console.error("Lỗi", error);
-                setGames([]); // Set to empty array on error
-            });
-    }, []);
+    // Hàm tải game từ API
+    const fetchGames = async (pageNum) => {
+        try {
+            const response = await fetch(
+                `http://localhost:5000/games?page=${pageNum}&limit=${limit}`
+            );
+            const data = await response.json();
+            if (pageNum === 1) {
+                setGames(data.games); // Trang đầu tiên, thay thế danh sách
+            } else {
+                setGames((prevGames) => [...prevGames, ...data.games]); // Thêm vào danh sách
+            }
+            setTotalGames(data.totalGames); // Cập nhật tổng số game
+        } catch (error) {
+            console.error("Lỗi", error);
+            setGames([]);
+        }
+    };
 
+    // Tải game khi vào trang hoặc khi page thay đổi
     useEffect(() => {
-        fetch(`http://localhost:5000/games/search_Game?search=${search}`)
-            .then((res) => res.json())
-            .then((data) => setGames(data))
-            .catch((error) => {
-                console.error("Lỗi", error);
-                setGames([]); // Set to empty array on error
-            });
+        fetchGames(page);
+    }, [page]);
+
+    // Tải game khi tìm kiếm
+    useEffect(() => {
+        if (search) {
+            fetch(`http://localhost:5000/games/search_Game?search=${search}`)
+                .then((res) => res.json())
+                .then((data) => setGames(data))
+                .catch((error) => {
+                    console.error("Lỗi", error);
+                    setGames([]);
+                });
+        } else {
+            fetchGames(1); // Reset về trang 1 khi không tìm kiếm
+            setPage(1);
+        }
     }, [search]);
 
+    // Tải game khi lọc thể loại
     useEffect(() => {
-        fetch(`http://localhost:5000/games/sort_Game?sortOrder=${sortOrder}`)
-            .then((res) => res.json())
-            .then((data) => setGames(data))
-            .catch((error) => {
-                console.error("Lỗi", error);
-                setGames([]); // Set to empty array on error
-            });
-    }, [sortOrder]);
-
-    useEffect(() => {
-        if (!filterCategory) return;
+        if (!filterCategory) {
+            fetchGames(1); // Reset về trang 1 khi không lọc
+            setPage(1);
+            return;
+        }
 
         fetch(
             `http://localhost:5000/games/filterCategory?category=${filterCategory}`
@@ -53,7 +70,7 @@ export function Listgames({
             .then((data) => setGames(data))
             .catch((error) => {
                 console.error("Lỗi", error);
-                setGames([]); // Set to empty array on error
+                setGames([]);
             });
     }, [filterCategory]);
 
@@ -75,17 +92,26 @@ export function Listgames({
                     prevGames.filter((game) => game.id !== id)
                 );
             } else {
-                alert("Lỗi " + data.message);
+                alert(data.message);
             }
         } catch (error) {
             console.error("Lỗi khi xóa game", error);
         }
     };
 
+    // Xử lý nút "Tải thêm"
+    const handleLoadMore = () => {
+        if (games.length >= totalGames) {
+            alert("Đã tải hết game!");
+            return;
+        }
+        setPage((prevPage) => prevPage + 1); // Tăng trang để tải thêm
+    };
+
     return (
         <div className="h-auto">
             <header className="flex items-center mt-7 h-[50px]">
-                <h1 className="text-[#C7D5E0] ml-[35px] text-[25px] font-bold ">
+                <h1 className="text-[#C7D5E0] ml-[60px] text-[25px] font-bold ">
                     <span className="drop-shadow-[0_0_1px_white] duration-300 hover:drop-shadow-[0_0_10px_white]">
                         L
                     </span>
@@ -98,7 +124,6 @@ export function Listgames({
                     <span className="drop-shadow-[0_0_1px_white] duration-300 hover:drop-shadow-[0_0_10px_white]">
                         t
                     </span>{" "}
-                    {""}
                     <span className="drop-shadow-[0_0_1px_white] duration-300 hover:drop-shadow-[0_0_10px_white]">
                         G
                     </span>
@@ -111,7 +136,6 @@ export function Listgames({
                     <span className="drop-shadow-[0_0_1px_white] duration-300 hover:drop-shadow-[0_0_10px_white]">
                         e
                     </span>{" "}
-                    {""}
                     <span className="drop-shadow-[0_0_2px_white] duration-300 hover:drop-shadow-[0_0_20px_white]">
                         🎮
                     </span>
@@ -128,20 +152,9 @@ export function Listgames({
                     className="text-[#C7D5E0] pl-2 w-[230px] h-[30px] ml-[120px] bg-[#0a0e1a] duration-300 hover:bg-[#12182d]  hover:drop-shadow-[0_0_5px_white]"
                 />
                 <select
-                    className="h-[30px] text-[#fff] rounded-sm w-[230px] ml-[170px] bg-[#0a0e1a] duration-300 hover:bg-[#12182d]  hover:drop-shadow-[0_0_5px_white]"
-                    value={sortOrder}
-                    onChange={(e) => setsortOrder(e.target.value)}
-                >
-                    <option value="" selected>
-                        Sắp xếp theo chữ cái
-                    </option>
-                    <option value="asc">A → Z</option>
-                    <option value="desc">Z → A</option>
-                </select>
-                <select
                     value={filterCategory}
                     onChange={(e) => setFilterCategory(e.target.value)}
-                    className="rounded-sm h-[30px] w-[90px] ml-[30px] bg-[#0a0e1a] text-white hover:bg-[#12182d] hover:drop-shadow-[0_0_5px_white]"
+                    className="rounded-sm h-[30px] w-[190px] ml-[230px] bg-[#0a0e1a] text-white hover:bg-[#12182d] hover:drop-shadow-[0_0_5px_white]"
                 >
                     <option value="">Lọc game</option>
                     <option value="HR">Horror(HR)</option>
@@ -156,13 +169,13 @@ export function Listgames({
                     <option value="RC">Racing(RC)</option>
                     <option value="PZ">Puzzle(PZ)</option>
                 </select>
-                <Link to="/games/create" className="ml-[70px]">
+                <Link to="/games/create" className="ml-[150px]">
                     <button
                         className="w-[30px] h-[30px] bg-[#151d2a] text-white rounded-sm 
                     drop-shadow-[0_0_1px_white] duration-300 hover:drop-shadow-[0_0_3px_white] 
                     active:scale-95 active:drop-shadow-[0_0_5px_white]"
                     >
-                        <i class="fa-solid fa-plus duration-300 hover:drop-shadow-[0_0_3px_white]"></i>
+                        <i className="fa-solid fa-plus duration-300 hover:drop-shadow-[0_0_3px_white]"></i>
                     </button>
                 </Link>
             </header>
@@ -176,7 +189,7 @@ export function Listgames({
                                     imagePath = require(`../assets/images/${game.img}`);
                                 } catch (error) {
                                     console.error(
-                                        `"Không tìm thấy ảnh:", game.img`
+                                        `Không tìm thấy ảnh: ${game.img}`
                                     );
                                     imagePath = "";
                                 }
@@ -240,10 +253,7 @@ export function Listgames({
                     </div>
                     {Array.isArray(games) && games.length > 0 && (
                         <div className="flex justify-center mt-5">
-                            <Button
-                                onClick={() => setGames([...games, ...games])}
-                                variant="primary"
-                            >
+                            <Button onClick={handleLoadMore} variant="primary">
                                 Tải thêm
                             </Button>
                         </div>

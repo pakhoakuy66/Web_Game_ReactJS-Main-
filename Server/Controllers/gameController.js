@@ -7,8 +7,14 @@ export const getAllGame = async (req, res) => {
         const games = await Game.find()
             .skip((page - 1) * limit)
             .limit(Number(limit));
+        const totalGames = await Game.countDocuments(); // Đếm tổng số game
 
-        res.json(games);
+        res.json({
+            games,
+            totalGames,
+            currentPage: Number(page),
+            totalPages: Math.ceil(totalGames / limit),
+        });
     } catch (error) {
         res.status(500).json({ message: "Lỗi khi lấy dữ liệu", error });
     }
@@ -28,28 +34,6 @@ export const findGame = async (req, res) => {
     } catch (error) {
         res.status(500).json({
             message: "Lỗi khi tìm game",
-            error: error.message,
-        });
-    }
-};
-
-export const sortGame = async (req, res) => {
-    const { sortOrder } = req.query;
-
-    try {
-        let sort = {};
-
-        if (sortOrder === "asc") {
-            sort.name = 1;
-        } else if (sortOrder === "desc") {
-            sort.name = -1;
-        }
-
-        const games = await Game.find().sort(sort);
-        res.json(games);
-    } catch (error) {
-        res.status(500).json({
-            message: "Lỗi khi sắp xếp game",
             error: error.message,
         });
     }
@@ -132,10 +116,49 @@ export const findCategory = async (req, res) => {
 
 export const updateGame = async (req, res) => {
     try {
-        const { id, name, releaseDate, description, img, category } = req.body;
+        const gameId = req.params.id;
+        const { name, releaseDate, description, img } = req.body;
 
-        if (!id) {
-            return res.status(400).json({ message: "Game này không tồn tại" });
+        const updateGame = await Game.findOneAndUpdate(
+            { id: gameId },
+            { name, releaseDate, description, img },
+            { new: true }
+        );
+
+        if (!updateGame) {
+            return res
+                .status(404)
+                .json({ message: "Không tìm thấy game để cập nhật" });
         }
-    } catch (error) {}
+
+        res.status(200).json({
+            message: "Cập nhật game thành công",
+            game: updateGame,
+        });
+    } catch (error) {
+        console.error("Lỗi khi update", error);
+        res.status(500).json({ message: "Lỗi khi update", error });
+    }
+};
+
+export const deleteGame = async (req, res) => {
+    try {
+        const gameId = req.params.id;
+        const deleteGame = await Game.findOneAndDelete({ id: gameId });
+
+        if (!deleteGame) {
+            return res
+                .status(404)
+                .json({ message: "Không tìm thấy game để xóa" });
+        }
+
+        res.status(200).json({
+            message: "Xóa game thành công",
+            gameId: deleteGame.id,
+            name: deleteGame.name,
+        });
+    } catch (error) {
+        console.error("Lỗi khi xóa game", error);
+        res.status(500).json({ message: "Lỗi khi xóa game", error });
+    }
 };
