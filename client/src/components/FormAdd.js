@@ -61,7 +61,7 @@ export function FormAdd({ setGames }) {
     const handleCreate = async (e) => {
         e.preventDefault();
 
-        if (!name || !date || !description || !image || !category) {
+        if (!name || !date || !description || !category) {
             alert("Vui lòng nhập hết tất cả các trường!");
             return;
         }
@@ -71,7 +71,7 @@ export function FormAdd({ setGames }) {
             name,
             releaseDate: formattedDate,
             description,
-            img: image.name,
+            img: image ? image.name : "",
             category, // Gửi về để server tạo id
         };
 
