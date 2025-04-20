@@ -7,14 +7,6 @@ export function FormUpdate({ setGames, games }) {
     const { id } = useParams();
     const gameToUpdate = games.find((g) => g.id.toString() === id);
 
-    if (!gameToUpdate) {
-        return (
-            <h2 className="text-white text-center">
-                Không tìm thấy game để cập nhật!
-            </h2>
-        );
-    }
-
     const [name, setName] = useState(gameToUpdate.name);
     const [date, setDate] = useState(gameToUpdate.releaseDate);
     const [description, setDescription] = useState(gameToUpdate.description);
@@ -22,6 +14,14 @@ export function FormUpdate({ setGames, games }) {
     const [imagePreview, setImagePreview] = useState(gameToUpdate.imagePath);
 
     const navigate = useNavigate();
+
+    if (!gameToUpdate) {
+        return (
+            <h2 className="text-white text-center">
+                Không tìm thấy game để cập nhật!
+            </h2>
+        );
+    }
 
     const handleImageChange = (e) => {
         if (e.target.files.length > 0) {
