@@ -76,7 +76,7 @@ export function FormAdd({ setGames }) {
         };
 
         try {
-            const response = await fetch("http://localhost:5000/games/create", {
+            const response = await fetch(`${apiUrl}/games/create`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
