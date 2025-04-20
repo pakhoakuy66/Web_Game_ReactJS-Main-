@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 export function FormAdd({ setGames }) {
     const [id, setId] = useState("");
     const [name, setName] = useState("");
@@ -41,7 +43,7 @@ export function FormAdd({ setGames }) {
 
         try {
             const res = await fetch(
-                `http://localhost:5000/games/generate-id?category=${value}`
+                `${apiUrl}/games/generate-id?category=${value}`
             );
             const data = await res.json();
 

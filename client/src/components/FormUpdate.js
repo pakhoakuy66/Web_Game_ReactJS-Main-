@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router";
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 export function FormUpdate({ setGames, games }) {
     const { id } = useParams();
     const gameToUpdate = games.find((g) => g.id.toString() === id);
@@ -47,14 +49,11 @@ export function FormUpdate({ setGames, games }) {
         };
 
         try {
-            const response = await fetch(
-                `http://localhost:5000/games/update/${id}`,
-                {
-                    method: "PUT",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(updatedGame),
-                }
-            );
+            const response = await fetch(`${apiUrl}/games/update/${id}`, {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(updatedGame),
+            });
 
             const data = await response.json();
             if (response.ok) {

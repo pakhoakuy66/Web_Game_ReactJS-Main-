@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { data, Link } from "react-router";
 import { Button } from "react-bootstrap";
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 export function Listgames({
     sortOrder,
     setsortOrder,
@@ -19,7 +21,7 @@ export function Listgames({
     const fetchGames = async (pageNum) => {
         try {
             const response = await fetch(
-                `http://localhost:5000/games?page=${pageNum}&limit=${limit}`
+                `${apiUrl}/games?page=${pageNum}&limit=${limit}`
             );
             const data = await response.json();
             if (pageNum === 1) {
@@ -42,7 +44,7 @@ export function Listgames({
     // Tải game khi tìm kiếm
     useEffect(() => {
         if (search) {
-            fetch(`http://localhost:5000/games/search_Game?search=${search}`)
+            fetch(`${apiUrl}/games/search_Game?search=${search}`)
                 .then((res) => res.json())
                 .then((data) => setGames(data))
                 .catch((error) => {
@@ -63,9 +65,7 @@ export function Listgames({
             return;
         }
 
-        fetch(
-            `http://localhost:5000/games/filterCategory?category=${filterCategory}`
-        )
+        fetch(`${apiUrl}/games/filterCategory?category=${filterCategory}`)
             .then((res) => res.json())
             .then((data) => setGames(data))
             .catch((error) => {
@@ -78,12 +78,9 @@ export function Listgames({
         if (!window.confirm(`Bạn có muốn xóa game ${name}`)) return;
 
         try {
-            const response = await fetch(
-                `http://localhost:5000/games/delete/${id}`,
-                {
-                    method: "DELETE",
-                }
-            );
+            const response = await fetch(`${apiUrl}/games/delete/${id}`, {
+                method: "DELETE",
+            });
 
             const data = await response.json();
             if (response.ok) {

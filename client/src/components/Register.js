@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router";
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 export function Register() {
     const [register, setRegister] = useState({
         username: "",
@@ -24,7 +26,7 @@ export function Register() {
         }
 
         try {
-            const res = await fetch("http://localhost:5000/register/create", {
+            const res = await fetch(`${apiUrl}/register/create`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
